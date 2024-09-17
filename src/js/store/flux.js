@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(()=>{
 						fetch("https://playground.4geeks.com/contact/agendas/isabella/contacts")
 						.then((response)=> response.json())
-						.then((data)=> setStore({contacs: data.contacts}))
+						.then(()=> setStore(getActions().loadSomeData()))
 					})
 			}, 
 			idContactToPost: (idContact) => {
@@ -79,8 +79,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   						.then(() => {
 							fetch("https://playground.4geeks.com/contact/agendas/isabella/contacts")
 								.then((response)=> response.json())
-								.then((data)=> setStore({contacs: data.contacts}))
-						})
+								.then(()=> setStore(getActions().loadSomeData()))
+							})
 			
 			},
 			changeColor: (index, color) => {
