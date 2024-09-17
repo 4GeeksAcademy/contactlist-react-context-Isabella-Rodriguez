@@ -9,10 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().loadSomeData();
-			},
 			loadSomeData: () => {
 				console.log("se cargo la pagina")
 				fetch("https://playground.4geeks.com/contact/agendas/isabella/contacts")
@@ -31,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(()=> {
 						fetch("https://playground.4geeks.com/contact/agendas/isabella/contacts")
 						.then((response)=> response.json())
-						.then((data)=> setStore({contacs: data.contacts}))
+						.then(()=> setStore(getActions().loadSomeData()))
 					})
 				 
 				//setStore({ contacs: store.contacs.filter((contacto, index) => contacto.id != idToDelete) });
